@@ -1,19 +1,36 @@
 import json
 from dice import generate_dice_roll
-from auth import authenticate_user
+from auth import authenticate_users
+from rule_engine import calculate_score
 
-with open('users.json') as f:
-    d = json.load(f)
-    print(d)
+def main():
+    # if not authenticate_users(): return
 
-user_input = input("Player 1. What is your username?")
-password_input = input("Player 1. What is your password?")
+    player_1_total = 0
+    player_2_total = 0
+    
+    for i in range(5):
+        print('Round {}'.format(i + 1))
+    
+        dice1 = generate_dice_roll() 
+        dice2 = generate_dice_roll()
+        player_1_total += calculate_score(dice1, dice2)
+        print(player_1_total)
+        
+        dice1 = generate_dice_roll() 
+        dice2 = generate_dice_roll()
+        player_2_total += calculate_score(dice1, dice2)
+        print(player_2_total)
+    
+    print(player_1_total)
+    print(player_2_total)
+    if player_1_total > player_2_total:
+        print("Player 1 is the winner!!")
+    else:
+        print("Player 2 is the winner!!!")
+     
 
-user_input = input("Player 2. What is your username?")
-user_input = input("Player 2. What is your password?")
-
-val = authenticate_user(user_input, password_input, d)
-print(val)
-
-print(generate_dice_roll())
-print(generate_dice_roll())
+    return True
+    
+if __name__ == '__main__':
+    main()
