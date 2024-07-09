@@ -6,9 +6,11 @@ with open('users.json') as f:
     d = json.load(f)
     print(d)
 
-user_input = input("what is your username?")
-password_input = input("what is your password?")
+user_input = input("Player 1. What is your username?")
+password_input = input("Player 1. What is your password?")
 
+user_input = input("Player 2. What is your username?")
+user_input = input("Player 2. What is your password?")
 
 val = authenticate_user(user_input, password_input, d)
 print(val)
