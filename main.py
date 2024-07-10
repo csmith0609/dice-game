@@ -5,15 +5,14 @@ from rule_engine import calculate_score
 
 def determine_winner(player_1_total, player_2_total):
     print("Tiebreak!")
-    
     while player_1_total == player_2_total:
-        player_1_total = generate_dice_roll()
-        player_2_total = generate_dice_roll()
+            player_1_total = generate_dice_roll()
+            player_2_total = generate_dice_roll()
 
     if player_1_total > player_2_total:
-        print("Player 1 is the winner!!")
+            print("Player 1 is the winner!!")
     else:
-        print("Player 2 is the winner!!!")
+            print("Player 2 is the winner!!!")
       
 def take_turn():
     dice1 = generate_dice_roll() 
@@ -40,9 +39,17 @@ def main():
 
     print(player_1_total)
     print(player_2_total)
+
+    name = ""
+    highest_score = 0
+
     if player_1_total > player_2_total:
+        name = "player1"
+        highest_score = player_1_total
         print("Player 1 is the winner!!")
     elif player_1_total < player_2_total:
+        name = "player2"
+        highest_score = player_2_score
         print("Player 2 is the winner!!!")
     else:    
         determine_winner(player_1_total, player_2_total)
@@ -57,7 +64,7 @@ def main():
             # If the file is empty or corrupted, start with an empty list
             high_scores = []
 
-    new_high_score = {"name": "cohen", "score": player_1_total}
+    new_high_score = {"name": name, "score": highest_score}
     high_scores.append(new_high_score)
     print(high_scores)
 
