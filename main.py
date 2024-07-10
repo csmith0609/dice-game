@@ -47,24 +47,22 @@ def main():
     else:    
         determine_winner(player_1_total, player_2_total)
 
-    return True
+    try:
+        with open("high_scores.json", "r") as file:
+            high_scores = json.load(file)
+    except FileNotFoundError:
+            # If the file does not exist, start with an empty list
+            high_scores = []
+    except json.JSONDecodeError:
+            # If the file is empty or corrupted, start with an empty list
+            high_scores = []
 
-try:
-    with open("high_scores.json", "r") as file:
-        high_scores = json.load(file)
-except FileNotFoundError:
-        # If the file does not exist, start with an empty list
-        high_scores = []
-except json.JSONDecodeError:
-        # If the file is empty or corrupted, start with an empty list
-        high_scores = []
+    new_high_score = {"name": "cohen", "score": player_1_total}
+    high_scores.append(new_high_score)
+    print(high_scores)
 
-new_high_score = {"player": "name", "score": 10}
-high_scores.append(new_high_score)
-print(high_scores)
-
-with open("high_scores.json", "w") as file:
-    json.dump(high_scores, file, indent=4)
+    with open("high_scores.json", "w") as file:
+        json.dump(high_scores, file, indent=4)
 
 if __name__ == '__main__':
     main()

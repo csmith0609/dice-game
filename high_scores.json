@@ -1,126 +1,26 @@
 [
     {
-        "player": "name",
-        "score": 10
+        "name": "cohen",
+        "score": 38
     },
     {
-        "player": "name",
-        "score": 10
+        "name": "cohen",
+        "score": 40
     },
     {
-        "player": "name",
-        "score": 10
+        "name": "cohen",
+        "score": 60
     },
     {
-        "player": "name",
-        "score": 10
+        "name": "cohen",
+        "score": 80
     },
     {
-        "player": "name",
-        "score": 10
+        "name": "cohen",
+        "score": 42
     },
     {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
-    },
-    {
-        "player": "name",
-        "score": 10
+        "name": "cohen",
+        "score": 4
     }
 ]
