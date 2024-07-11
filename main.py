@@ -11,16 +11,24 @@ def determine_winner(player_1_total, player_2_total):
 
     if player_1_total > player_2_total:
             print("Player 1 is the winner!!")
+            return "user1", player_1_total
     else:
             print("Player 2 is the winner!!!")
-      
+            return "user2", player_2_total
+
 def take_turn():
     dice1 = generate_dice_roll() 
     dice2 = generate_dice_roll()
     return calculate_score(dice1, dice2) 
 
 def main():
-    # if not authenticate_users(): return
+    authenticated_users = authenticate_users()
+    if not authenticated_users:
+        print("Authentication failed. Exiting program.")
+        return
+    else:
+       user1, user2 = authenticated_users
+       print(f"Authenticated users: {user1}, {user2}")
 
     player_1_total = 0
     player_2_total = 0
@@ -44,16 +52,18 @@ def main():
     highest_score = 0
 
     if player_1_total > player_2_total:
-        name = "player1"
+        name = 'user1'
         highest_score = player_1_total
         print("Player 1 is the winner!!")
     elif player_1_total < player_2_total:
-        name = "player2"
-        highest_score = player_2_score
+        name = 'user2'
+        highest_score = player_2_total
         print("Player 2 is the winner!!!")
     else:    
-        determine_winner(player_1_total, player_2_total)
+        name, highest_score = determine_winner(player_1_total, player_2_total)
 
+
+        
     try:
         with open("high_scores.json", "r") as file:
             high_scores = json.load(file)
