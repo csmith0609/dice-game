@@ -93,6 +93,9 @@ def main():
 
     with open("high_scores.json", "w") as file:
         json.dump(high_scores, file, indent=4)
+
+
 if __name__ == '__main__':
     main()
 
+    

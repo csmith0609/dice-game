@@ -10,5 +10,13 @@
     {
         "name": "user1",
         "score": 64
+    },
+    {
+        "name": "user2",
+        "score": 91
+    },
+    {
+        "name": "user2",
+        "score": 58
     }
 ]
