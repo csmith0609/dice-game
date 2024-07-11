@@ -10,11 +10,13 @@ def determine_winner(player_1_total, player_2_total):
             player_2_total = generate_dice_roll()
 
     if player_1_total > player_2_total:
+            user1 = "Player 1"
             print("Player 1 is the winner!!")
-            return "user1", player_1_total
+            return user1, player_1_total
     else:
+            user2 = "Player 2"
             print("Player 2 is the winner!!!")
-            return "user2", player_2_total
+            return user2, player_2_total
 
 def take_turn():
     dice1 = generate_dice_roll() 
@@ -52,50 +54,36 @@ def main():
     highest_score = 0
 
     if player_1_total > player_2_total:
-        name = 'user1'
+        name = user1
         highest_score = player_1_total
         print("Player 1 is the winner!!")
     elif player_1_total < player_2_total:
-        name = 'user2'
+        name = user2
         highest_score = player_2_total
         print("Player 2 is the winner!!!")
     else:    
         name, highest_score = determine_winner(player_1_total, player_2_total)
 
-
-        
     try:
         with open("high_scores.json", "r") as file:
             high_scores = json.load(file)
-    except FileNotFoundError:
-            # If the file does not exist, start with an empty list
-            high_scores = []
-    except json.JSONDecodeError:
-            # If the file is empty or corrupted, start with an empty list
-            high_scores = []
+    except (FileNotFoundError, json.JSONDecodeError):
+        high_scores = []
 
     new_high_score = {"name": name, "score": highest_score}
     high_scores.append(new_high_score)
-    print(high_scores)
 
+    # Sort the high scores in descending order based on score
+    sorted_high_scores = sorted(high_scores, key=lambda x: x["score"], reverse=True)
+
+    # Display only the top 5 high scores
+    print("Top 5 High Scores:")
+    for idx, score in enumerate(sorted_high_scores[:5], start=1):
+        print(f"{idx}. {score['name']} - {score['score']}")
+
+    # Save all high scores back to the file
     with open("high_scores.json", "w") as file:
-        json.dump(high_scores, file, indent=4)
-    if name not in high_scores or highest_score > high_scores[name]:
-        high_scores[name] = highest_score
-    
-    
-    # Check and update the highest score
-    if name not in high_scores or highest_score > high_scores[name]:
-        high_scores[name] = highest_score
-        print(f"New high score for {name}: {highest_score}")
-    else:
-        print(f"No new high score. Current high score for {name}: {high_scores[name]}")
-
-    with open("high_scores.json", "w") as file:
-        json.dump(high_scores, file, indent=4)
-
+        json.dump(sorted_high_scores, file, indent=4)
 
 if __name__ == '__main__':
     main()
-
-    
