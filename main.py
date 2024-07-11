@@ -80,7 +80,19 @@ def main():
 
     with open("high_scores.json", "w") as file:
         json.dump(high_scores, file, indent=4)
+    if name not in high_scores or highest_score > high_scores[name]:
+        high_scores[name] = highest_score
+    
+    
+    # Check and update the highest score
+    if name not in high_scores or highest_score > high_scores[name]:
+        high_scores[name] = highest_score
+        print(f"New high score for {name}: {highest_score}")
+    else:
+        print(f"No new high score. Current high score for {name}: {high_scores[name]}")
 
+    with open("high_scores.json", "w") as file:
+        json.dump(high_scores, file, indent=4)
 if __name__ == '__main__':
     main()
 
